@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contiamo-app
+  labels:
+    app: contiamo
+spec:
+  selector:
+    matchLabels:
+      app: contiamo
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: contiamo
+        tier: web
+    spec:
+      containers:
+      - name: contiamo-app
+        image: gcr.io/t-dragon-246512/contiamo-app:v1
+        env:
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgsql
+                key: password
+          - name: DB_HOST
+            value: postgres
+        ports:
+        - containerPort: 8080

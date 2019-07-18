@@ -1,0 +1,56 @@
+apiVersion: "v1"
+kind: "ConfigMap"
+metadata:
+  name: "contiamo-app-config"
+  namespace: "default"
+  labels:
+    app: "contiamo-app"
+data:
+  PGPASSWORD: "2QxRXJjWoMGL"
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "contiamo-app"
+  namespace: "default"
+  labels:
+    app: "contiamo-app"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "contiamo-app"
+  template:
+    metadata:
+      labels:
+        app: "contiamo-app"
+    spec:
+      containers:
+      - name: "contiamo-app-sha256"
+        image: "gcr.io/t-dragon-246512/contiamo-app@sha256:83f65b7cef80a5c91e07d85122d96a34940921206554c8def80e400539550008"
+        env:
+        - name: "PGPASSWORD"
+          valueFrom:
+            configMapKeyRef:
+              key: "PGPASSWORD"
+              name: "contiamo-app-config"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "contiamo-app-hpa"
+  namespace: "default"
+  labels:
+    app: "contiamo-app"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "contiamo-app"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
