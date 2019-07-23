@@ -4,18 +4,17 @@ variable "linux_admin_username" {
 }
 
 variable "linux_admin_password" {
-  type ="string"
+  type        = "string"
   description = "The password for the Linux admin account."
 }
 
 // GCP Variables
 variable "gcp_cluster_count" {
-  type = "string"
+  type        = "string"
   description = "Count of cluster instances to start."
 }
 
 variable "cluster_name" {
-  type = "string"
+  type        = "string"
   description = "Cluster name for the GCP Cluster."
 }
-

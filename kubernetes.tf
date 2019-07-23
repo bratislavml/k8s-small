@@ -10,21 +10,18 @@ resource "google_container_cluster" "primary" {
     username = "${var.linux_admin_username}"
     password = "${var.linux_admin_password}}"
   }
-
-
 }
 
 resource "google_container_node_pool" "primary_nodes" {
-  name = "primaty-node-pool"
-  location = "us-central1"
-  project  = "t-dragon-246512"
-  cluster = "${google_container_cluster.primary.name}"
+  name       = "primaty-node-pool"
+  location   = "us-central1"
+  project    = "t-dragon-246512"
+  cluster    = "${google_container_cluster.primary.name}"
   node_count = 1
 
   node_config {
-    preemptible = true
+    preemptible  = true
     machine_type = "n1-standard-1"
-
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
@@ -33,6 +30,4 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/monitoring",
     ]
   }
-
-
 }
