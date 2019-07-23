@@ -22,7 +22,7 @@ spec:
           - name: PGPASSWORD
             valueFrom:
               secretKeyRef:
-                name: pgsql
+                name: postgres
                 key: password
           - name: DB_HOST
             value: postgres

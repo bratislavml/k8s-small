@@ -1,4 +1,4 @@
 cluster_name = "k8s-small"
 gcp_cluster_count = 1
-linux_admin_username = ""
-linux_admin_password = ""
+linux_admin_username = "user"
+linux_admin_password = "8zez6zeohf6eAmk%^7"
