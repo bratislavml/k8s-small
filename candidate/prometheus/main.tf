@@ -3,17 +3,15 @@
 #  content = "${file("${path.module}/namespace.yaml")}"
 #}
 
-####### Creating Cluster Roles for prometheus ####
-#resource "k8s_manifest" "prometheus_crole" {
-#  namespace = "${k8s_manifest.monitoring_namespace.name}"
-#  content   = "${file("${path.module}/prometheus-resources/clusterrole.yaml")}"
-#}
+###### Creating Cluster Roles for prometheus ####
+resource "k8s_manifest" "prometheus_crole" {
+  content   = "${file("${path.module}/clusterRole.yaml")}"
+}
 
 ####### Creating Cluster Rolebinding for prometheus ####
-#resource "k8s_manifest" "prometheus_crb" {
-#  namespace = "${k8s_manifest.monitoring_namespace.name}"
-#  content   = "${file("${path.module}/prometheus-resources/clusterrolebinding.yaml")}"
-#}
+resource "k8s_manifest" "prometheus_crb" {
+  content   = "${file("${path.module}/clusterrolebinding.yaml")}"
+}
 
 ######### Prometheus ConfigMap #####
 resource "k8s_manifest" "prometheus_ConfigMap" {
