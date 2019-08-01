@@ -6,8 +6,8 @@ resource "kubernetes_secret" "postgres" {
   }
 
   data = {
-    username = "postgres"
-    password = "2bsybsy1g8sg12721gb"
+    username = ""
+    password = ""
   }
 
   type = "kubernetes.io/basic-auth"
