@@ -3,21 +3,21 @@ kind: Deployment
 metadata:
   name: contiamo-app
   labels:
-    app: contiamo
+    app: contiamo-app
 spec:
   selector:
     matchLabels:
-      app: contiamo
+      app: contiamo-app
       tier: web
   template:
     metadata:
       labels:
-        app: contiamo
+        app: contiamo-app
         tier: web
     spec:
       containers:
       - name: contiamo-app
-        image: gcr.io/t-dragon-246512/contiamo-app:v1
+        image: gcr.io/t-dragon-246512/contiamo-app:v2
         env:
           - name: PGPASSWORD
             valueFrom:

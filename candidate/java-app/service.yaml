@@ -1,19 +1,18 @@
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: prometheus-service
-  namespace: "default"
+  labels:
+      app: java-app
+  name: java-app
   annotations:
       prometheus.io/scrape: 'true'
       prometheus.io/path:   /metrics
       prometheus.io/port:   '8080'
-
 spec:
-  selector:
-    app: prometheus-server
   type: LoadBalancer
   ports:
     - port: 8080
-      targetPort: 9090
-      nodePort: 30000
+      targetPort: 8080
+      protocol: TCP
+  selector:
+      app: java-app

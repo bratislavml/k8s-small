@@ -4,6 +4,10 @@ metadata:
   labels:
     app: contiamo-app
   name: contiamo-app
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/path:   /metrics
+      prometheus.io/port:   '8080'
 spec:
   type: LoadBalancer
   ports:

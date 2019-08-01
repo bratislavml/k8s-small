@@ -1,0 +1,19 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    name: example-ingress
+    labels:
+      app: java-app
+    annotations:
+  spec:
+    rules:
+      - host: app.example.com
+        http:
+          paths:
+            - path: /
+              backend:
+                serviceName: java-app
+                servicePort: 80
+    tls:
