@@ -1,13 +1,11 @@
-provider "kubernetes" {}
-
 resource "kubernetes_secret" "postgres" {
   metadata {
     name = "postgres"
   }
 
   data = {
-    username = ""
-    password = ""
+    username = "postgres"
+    password = "mndihoudh12"
   }
 
   type = "kubernetes.io/basic-auth"

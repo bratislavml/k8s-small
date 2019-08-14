@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jmx-exporter-deployment
+  namespace: "default"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jmx-exporter
+    spec:
+      containers:
+        - name: jmx-exporter
+          image: sscaling/jmx-prometheus-exporter
+          ports:
+            - containerPort: 5555
