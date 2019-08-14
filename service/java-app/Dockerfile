@@ -6,4 +6,4 @@ FROM bitnami/java:1.8-prod
 COPY --from=builder /app /app
 WORKDIR /app
 EXPOSE 8080
-CMD ["java", "-jar", "jenkins.war"]
+CMD ["java", "-XshowSettings:vm", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "jenkins.war"]

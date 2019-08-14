@@ -21,6 +21,9 @@ spec:
         resources:
           limits:
             memory: "1Gi"
+# https://very-serio.us/2017/12/05/running-jvms-in-kubernetes/
+          requests:
+            memory: "1Gi"
         ports:
         - containerPort: 8088
 

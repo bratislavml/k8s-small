@@ -141,6 +141,9 @@ Application 2 - description: simple JVM based app into the cluster use https://h
  
  `terraform apply`
  
+## JMX exporter
+  
+ 
 ## TODO:
 
 ## Paths
