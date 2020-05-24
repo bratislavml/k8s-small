@@ -157,4 +157,4 @@ This can be done with ingress.
 ## Bonus
 - enable JMX monitoring for the JVM app and pull data into Prometheus`
 
-NOTE: ajmo ponovo
+NOTE: ajmo ponovo da pokazemo branch
